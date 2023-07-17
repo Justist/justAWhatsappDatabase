@@ -70,7 +70,7 @@ class wappDatabase:
 		The previous database is assumed to have the same columns as this
 		program enforces.
 		"""
-		if(not(self.dftl == "") and os.path.isfile(self.dftl)):
+		if self.dftl != "" and os.path.isfile(self.dftl):
 			try:
 				database = np.load(self.dftl)
 				return self._extractDatabase(database)
@@ -85,8 +85,8 @@ class wappDatabase:
 		or an empty dataframe is made with the column names as can be set 
 		in this function.
 		"""
-		columnNames = ['Date', 'Time', 'Name', 'Message']
-		if(not(loadDataframe())):
+		if (not(loadDataframe())):
+			columnNames = ['Date', 'Time', 'Name', 'Message']
 			self.dataframe = pd.DataFrame(columns = columnNames)
 			
 	def _updateLeft(self, date, time, person):
